@@ -75,31 +75,50 @@ nav {
     background-color: var(--cor5r);
     padding: 10px;
     box-shadow: 4px 13px 9px 7px rgba(0, 0, 0, 0.455);
-    
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha se não couberem */
+    justify-content: space-around;
 }
 
-nav >a {
+nav > a {
     color: white;
     text-decoration: none;
     padding: 15px;
-    margin: auto;
+    margin: 5px;
     font-family: var(--fonte-corpo);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    
-
+    white-space: nowrap; /* Evita que o texto do link quebre em várias linhas */
+    flex-grow: 1; /* Permite que os links cresçam para preencher o espaço disponível */
+    text-align: center;
+    /* Adicionado para garantir que o tamanho mínimo do link não o faça quebrar antes do necessário */
+    min-width: fit-content; 
 }
 
-nav > a:hover{
+nav > a:hover {
     background-color: var(--cor3);
     transition: 0.5s;
     text-decoration: none;
     border-radius: 10px;
     color: white;
-    font-weight: bolder;;
+    font-weight: bolder;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-
 }
 
+/* Novo: Media Query para telas menores */
+@media screen and (max-width: 600px) {
+    nav {
+        /* flex-direction: column; <--- REMOVIDO PARA MANTÊ-LOS LADO A LADO */
+        /* align-items: stretch;  <--- REMOVIDO */
+        justify-content: center; /* Novo: Centraliza os links quando eles quebram em várias linhas */
+        padding: 5px;
+    }
+
+    nav > a {
+        padding: 8px 12px; /* Novo: Ajusta o padding para ser um pouco menor em telas pequenas */
+        margin: 3px; /* Novo: Ajusta a margem para espaçamento mais compacto */
+        font-size: 0.9em; /* Novo: Diminui um pouco a fonte para caber mais */
+    }
+}
 main {
     background-color: white;
     padding: 10px 10px 10px 10px;
@@ -115,23 +134,31 @@ main {
         
     }
 
-    main h1{
-        font-family: var(--fonte-padrao);
-        padding: 8px;
-        font-size: 30px;
-        font-weight: bold;
-        text-align: justify;
-        background-color: var(--cor1);
-        color: white;
-        background-image: linear-gradient(to right,  #f54b67 10%, #f7677fb7 50%, #f47e9100 60%);
-        margin: auto;
-        box-shadow: 0px 0px 0px black;
-        text-indent: 0.3em;
-        min-width: 300px;
-        max-width: 1000px ;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
-        
+   /* Estilos existentes para main h1 */
+main h1 {
+    font-family: var(--fonte-padrao);
+    padding: 8px;
+    font-size: 30px; /* Tamanho padrão para telas maiores */
+    font-weight: bold;
+    text-align: justify;
+    background-color: var(--cor1);
+    color: white;
+    background-image: linear-gradient(to right, #f54b67 10%, #f7677fb7 50%, #f47e9100 60%);
+    margin: auto;
+    box-shadow: 0px 0px 0px black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
+    text-indent: 0.3em;
+    min-width: 300px;
+    max-width: 1000px;
+}
+
+/* NOVO: Media Query para telas menores */
+@media screen and (max-width: 600px) {
+    main h1 {
+        font-size: 24px; /* Aumentado de 20px para 24px para telas pequenas */
+        padding: 5px; /* Reduz um pouco o padding */
     }
+}
 
     main h2{
         font-family: var(--font-titulo);
